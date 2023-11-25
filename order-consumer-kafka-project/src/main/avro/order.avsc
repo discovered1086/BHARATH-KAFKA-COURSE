@@ -1,0 +1,19 @@
+{
+  "namespace": "com.kingshuk.messaging.kafka.avro",
+  "type": "record",
+  "name": "Order",
+  "fields": [
+    {
+      "name": "customerName",
+      "type": "string"
+    },
+    {
+      "name": "productName",
+      "type": "string"
+    },
+    {
+      "name": "quantity",
+      "type": "int"
+    }
+  ]
+}

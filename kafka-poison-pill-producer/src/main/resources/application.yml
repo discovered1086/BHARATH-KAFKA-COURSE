@@ -1,0 +1,11 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    properties:
+      schema.registry.url: "http://localhost:8081"
+    producer:
+      group-id: "sdfjhsdjkfgdksfgdnb"
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      enable-auto-commit: false
+      auto-offset-reset: latest
