@@ -28,3 +28,7 @@ H
 Usrc/main/java/com/kingshuk/messaging/kafka/avro/OrderConsumerAvroDeserialization.java,0/0/00c4f72c4b6c2d24a522d5dbfb97c71dfbea8855
 
 Osrc/main/java/com/kingshuk/messaging/kafka/avro/OrderConsumerGenericRecord.java,e/4/e411d73dccb534d5d44c0d1284d7a02cb9e63eab
+K
+src/main/avro/trucking.avsc,a/4/a43d5c124ade997010d84a3f185e6512cefb79cc
+”
+dsrc/main/java/com/kingshuk/messaging/kafka/assignments/avro/TruckingConsumerAvroDeserialization.java,c/1/c1483e67ef001e27e683de7ad36f7ded1106938d

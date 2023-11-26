@@ -30,3 +30,9 @@ Psrc/main/java/com/kingshuk/messaging/kafka/avro/OrderProducerAvroSerializer.jav
 Osrc/main/java/com/kingshuk/messaging/kafka/avro/OrderProducerGenericRecord.java,4/d/4d16fab68c9dbd1c86c92df7c91067f7da3c3d95
 H
 src/main/avro/order.avsc,3/4/34b193a6282c192d8bc01b66c607b9a70e1d4e65
+K
+src/main/avro/trucking.avsc,a/4/a43d5c124ade997010d84a3f185e6512cefb79cc
+x
+Hsrc/main/java/com/kingshuk/messaging/kafka/assignments/package-info.java,0/5/05526786a2a88a3ce64b7cba05e2a49122064a71
+’
+bsrc/main/java/com/kingshuk/messaging/kafka/assignments/avro/TruckingProducerAvroSerialization.java,9/9/99e2ee7e462c65d07d1a0f3938659de04bef4f6c
