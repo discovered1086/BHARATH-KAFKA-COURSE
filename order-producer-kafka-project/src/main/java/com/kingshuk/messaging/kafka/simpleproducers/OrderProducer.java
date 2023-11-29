@@ -17,14 +17,7 @@ public class OrderProducer {
         properties.setProperty("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.setProperty("value.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
 
-//        try (KafkaProducer<String, Integer> producer = new KafkaProducer<>(properties)) {
-//            ProducerRecord<String, Integer> producerRecord = new ProducerRecord<>(ORDER_TOPIC
-//                    , "MacBook Pro", 1000);
-//            producer.send(producerRecord);
-//        }
-
-        KafkaProducer<String, Integer> producer = new KafkaProducer<>(properties);
-        try {
+        try (KafkaProducer<String, Integer> producer = new KafkaProducer<>(properties)) {
             ProducerRecord<String, Integer> producerRecord = new ProducerRecord<>(ORDER_TOPIC
                     , "MacBook Pro", 1000);
             Future<RecordMetadata> send = producer.send(producerRecord);
@@ -34,9 +27,6 @@ public class OrderProducer {
             System.out.println("The message has been sent successfully");
         } catch (Exception exception) {
             exception.printStackTrace();
-        } finally {
-            producer.close();
         }
-
     }
 }

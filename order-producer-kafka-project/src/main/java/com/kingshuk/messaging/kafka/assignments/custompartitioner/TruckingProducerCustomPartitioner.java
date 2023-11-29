@@ -2,7 +2,6 @@ package com.kingshuk.messaging.kafka.assignments.custompartitioner;
 
 import com.kingshuk.messaging.kafka.assignments.customserialization.TruckCoordinates;
 import com.kingshuk.messaging.kafka.assignments.customserialization.TruckSerializer;
-import com.kingshuk.messaging.kafka.custompartitioner.OrderPartitioner;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;

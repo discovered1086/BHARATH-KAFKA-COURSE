@@ -21,17 +21,17 @@ public class OrderProducerWithCustomPartitioner {
 
         try (KafkaProducer<String, Order> producer = new KafkaProducer<>(properties)) {
             Order order = Order.builder()
-                    .productName("MacBook Pro")
+                    .productName("MacBook Pro 2023")
                     .customerName("Kingshuk Mukherjee")
                     .quantity(135)
                     .build();
             ProducerRecord<String, Order> producerRecord = new ProducerRecord<>(MULTIPLE_PARTITION_TOPIC
-                    , "MacBook Pro", order);
+                    , "MacBook Pro 2023", order);
             Future<RecordMetadata> send = producer.send(producerRecord);
             RecordMetadata recordMetadata = send.get();
-            System.out.printf("The message went to %d partition and %d offset%n"
-                    , recordMetadata.partition(), recordMetadata.offset());
             System.out.println("The message has been sent successfully");
+            System.out.printf("Message key: %s %n partition: %d%n offset: %d"
+                    , order.getProductName(), recordMetadata.partition(), recordMetadata.offset());
         }catch (Exception exception) {
             exception.printStackTrace();
         }
