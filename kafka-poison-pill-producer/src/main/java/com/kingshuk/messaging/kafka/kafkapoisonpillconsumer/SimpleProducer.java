@@ -10,17 +10,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class SimpleProducer implements CommandLineRunner {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleProducer.class);
-
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+//    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleProducer.class);
+//
+//    @Autowired
+//    private KafkaTemplate<String, String> kafkaTemplate;
 
     @Override
     public void run(String... args) throws Exception {
-        kafkaTemplate.send("kafka-topic-poison-pill", "record2", "You have been warned");
-        LOGGER.info("Message sent");
+//        kafkaTemplate.send("kafka-topic-poison-pill", "record2", "You have been warned");
+//        LOGGER.info("Message sent");
     }
 }

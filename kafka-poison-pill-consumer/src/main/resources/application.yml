@@ -3,21 +3,20 @@ spring:
     bootstrap-servers: "localhost:9092"
     consumer:
       group-id: "sdfjhsdjkfgdksfgd"
-      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#      key-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 #      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       enable-auto-commit: false
       auto-offset-reset: latest
     properties:
-      schema.registry.url: "http://localhost:8081"
+      schema.registry.url: "http://localhost:8089"
       spring:
         deserializer:
           key:
             delegate:
-              class: org.apache.kafka.common.serialization.StringDeserializer
+              class: io.confluent.kafka.serializers.KafkaAvroDeserializer
           value:
             delegate:
-              class: org.apache.kafka.common.serialization.IntegerDeserializer
-    dlt:
-      enable: true
+              class: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
