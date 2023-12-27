@@ -20,7 +20,6 @@ public class DefaultErrorRecoverer implements ConsumerRecordRecoverer {
     @Override
     public void accept(ConsumerRecord<?, ?> consumerRecord, Exception exception) {
         LOGGER.info("Inside the default handler {}", consumerRecord.value());
-
         MessageListenerContainer listenerContainer = endpointRegistry.getListenerContainer("kafka-poison-pill");
         if(Objects.nonNull(listenerContainer)){
             listenerContainer.stop();

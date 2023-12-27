@@ -17,16 +17,17 @@ public class OrderConsumer {
         properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.IntegerDeserializer");
         properties.setProperty("group.id", "OrderGroup");
+        properties.setProperty("enable.auto.commit", "false");
 
-        try(KafkaConsumer<String, Integer> consumer = new KafkaConsumer<>(properties)) {
+        try (KafkaConsumer<String, Integer> consumer = new KafkaConsumer<>(properties)) {
             consumer.subscribe(Collections.singletonList(ORDER_TOPIC));
 
             ConsumerRecords<String, Integer> consumerRecords = consumer.poll(Duration.ofSeconds(40));
             consumerRecords.forEach(consumerRecord -> {
-                System.out.println("Product Name: "+ consumerRecord.key());
-                System.out.println("Product Quantity: "+ consumerRecord.value());
+                System.out.println("Product Name: " + consumerRecord.key());
+                System.out.println("Product Quantity: " + consumerRecord.value());
             });
-        }catch (Exception exception){
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
