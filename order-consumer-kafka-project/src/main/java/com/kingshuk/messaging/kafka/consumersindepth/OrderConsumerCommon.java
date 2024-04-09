@@ -9,6 +9,10 @@ import java.util.Properties;
 
 public class OrderConsumerCommon {
 
+    private OrderConsumerCommon(){
+        throw new UnsupportedOperationException("This is not allowed");
+    }
+
     protected static Properties getConsumerInDepthProperties() {
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "localhost:9092");

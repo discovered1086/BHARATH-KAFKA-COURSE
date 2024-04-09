@@ -20,11 +20,8 @@ public class OrderConsumerAsyncCommit {
 
         try (KafkaConsumer<String, Integer> consumer = new KafkaConsumer<>(properties)) {
             processConsumerRecords(consumer, ORDER_TOPIC);
-           consumer.commitAsync(new OffsetCommitCallback() {
-               @Override
-               public void onComplete(Map<TopicPartition, OffsetAndMetadata> offsets, Exception exception) {
-                   //Our logic goes here
-               }
+           consumer.commitAsync((offsets, exception) -> {
+               //Our logic goes here
            });
         } catch (Exception exception) {
             exception.printStackTrace();

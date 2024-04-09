@@ -5,9 +5,12 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Properties;
 
 import static com.kingshuk.messaging.kafka.consumersindepth.OrderConsumerCommon.getConsumerInDepthProperties;
@@ -15,6 +18,8 @@ import static com.kingshuk.messaging.kafka.consumersindepth.OrderConsumerCommon.
 public class OrderConsumerCustomCommit {
 
     public static final String ORDER_TOPIC = "bharath-course-order-topic";
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderConsumerCustomCommit.class);
 
     public static void main(String[] args) {
         Properties properties = getConsumerInDepthProperties();
@@ -24,8 +29,8 @@ public class OrderConsumerCustomCommit {
             ConsumerRecords<String, Integer> consumerRecords = consumer.poll(Duration.ofSeconds(40));
             int count = 0;
             for (ConsumerRecord<String, Integer> consumerRecord : consumerRecords) {
-                System.out.println("Product Name: " + consumerRecord.key());
-                System.out.println("Product Quantity: " + consumerRecord.value());
+                LOGGER.info("Product Name: {}", consumerRecord.key());
+                LOGGER.info("Product Quantity: {}" , consumerRecord.value());
 
                 if (count % 10 == 0) {
                     consumer.commitAsync(Collections.singletonMap(
@@ -33,7 +38,10 @@ public class OrderConsumerCustomCommit {
                                     new OffsetAndMetadata(consumerRecord.offset() + 1)),
                             (offsets, exception) -> {
                                 //Our logic when the 10 records are successfully committed.
-                                System.out.println("Offsets committed" + offsets);
+                                LOGGER.info("Offsets committed: {}", offsets);
+                                if(Objects.nonNull(exception)){
+                                    LOGGER.error("Commit failed", exception);
+                                }
                             });
                 }
 
