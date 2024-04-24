@@ -3,6 +3,7 @@ package com.kingshuk.messaging.kafka.consumersindepth;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.RangeAssignor;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -43,6 +44,11 @@ public class OrderConsumerCommon {
         properties.setProperty(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "3000");
 
         properties.setProperty(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, "1MB");
+        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        properties.setProperty(ConsumerConfig.CLIENT_ID_CONFIG, "OrderConsumer");
+        properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "100");
+        properties.setProperty(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, RangeAssignor.class.getName());
+
         return properties;
     }
 
