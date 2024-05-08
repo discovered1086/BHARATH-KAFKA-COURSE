@@ -32,7 +32,7 @@ public class WordCountUseCase {
                 .groupBy((k, v) -> v);
 
         KTable<String, Long> countsTable = groupedStream.count();
-        countsTable.toStream().t("kafka-streams-word-count-output-topic",
+        countsTable.toStream().to("kafka-streams-word-count-output-topic",
                 Produced.with(Serdes.String(), Serdes.Long()));
 
         Topology topology = builder.build();
