@@ -5,7 +5,7 @@ spring:
       schema.registry.url: "http://localhost:8081"
     producer:
       group-id: "sdfjhsdjkfgdksfgdnb"
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       enable-auto-commit: false
       auto-offset-reset: latest
