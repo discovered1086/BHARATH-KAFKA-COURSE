@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: kafka-consumer-spring-boot
+
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      group-id: user-consumer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.kingshuk.messaging.kafka.kafkaproducerspringboot.model
+    bootstrap-servers: localhost:9092
+
+server:
+  port: 8084
