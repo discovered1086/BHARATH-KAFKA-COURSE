@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreditCardKafkaProducer {
 
-    private static final String TOPIC_NAME = "kafka-course-assignment-credit-card-topic";
+    private static final String TOPIC_NAME = "test_topic";
     private static final Logger LOGGER = LoggerFactory.getLogger(CreditCardKafkaProducer.class);
 
     private final KafkaTemplate<String, CreditCard> kafkaTemplate;

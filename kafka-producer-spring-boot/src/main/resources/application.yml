@@ -3,8 +3,22 @@ spring:
     name: kafka-producer-spring-boot
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: pkc-p11xm.us-east-1.aws.confluent.cloud:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 #      value-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+    properties:
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required
+      security:
+        protocol: SASL_SSL
+      session:
+        timeout:
+          ms: 45000
+
+client:
+  id: ccloud-springboot-client-30360543-230e-46f7-a649-ad14f3003a03
+username='THMZIKVF3I5JUYJB' password='5AbvWmvi4VlQ7IeBM4QPuX4U9EaFKsRAQd7AVDKCgcrWhbMM4+w0uX5n9/qBl3Bq';
